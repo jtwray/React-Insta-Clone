@@ -1,26 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
+import dummyData from './dummy-data';
+import PostContainer from "./Components/PostContainer/PostContainer";
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data: dummyData
+    };
+  }
+  render(){
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {this.state.data.map(postdata => {
+      return (
+        <PostContainer postdata={this.state.data}/>
+      );
+    })}
+   
     </div>
   );
+}
 }
 
 export default App;
